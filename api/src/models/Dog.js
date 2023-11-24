@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
     name: { type: DataTypes.STRING, allowNull: false },
     height: { type: DataTypes.STRING, allowNull: false },
     weight: { type: DataTypes.STRING, allowNull: false },
-    image: { type: DataTypes.TEXT, allowNull: false },
+    image: { type: DataTypes.TEXT, allowNull: true },
     life_span: { type: DataTypes.STRING, allowNull: false },
   });
 };

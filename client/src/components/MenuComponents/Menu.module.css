@@ -1,0 +1,38 @@
+.NavContainer {
+  width: 20%;
+  height: 120vh;
+  box-shadow: 0px 0px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.UlContent {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0px;
+  gap: 10px;
+  top: 10px;
+}
+.UlContent > a {
+  width: 100%;
+  text-decoration: none;
+  font-size: 150%;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  color: black;
+}
+
+.UlContent > a:hover {
+  background-color: black;
+  color: white;
+}
+
+.UlContent a.active {
+  background-color: black;
+  color: white;
+}
