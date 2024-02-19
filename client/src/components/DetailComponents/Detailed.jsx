@@ -33,18 +33,17 @@ function Detailed({ Data, Close }) {
           <h2>Race:</h2>
           <p>{Data?.name}</p>
           <h2>Weight:</h2>
-          <p>{`${Data?.weight.minWeight}-${Data?.weight.maxWeight} cm`}</p>
+          <p>{`MinWeight:${Data?.weight.minWeight}  MaxWeight:${Data?.weight.maxWeight} kg`}</p>
           <h2>Height:</h2>
-          <p>{Data?.height}</p>
+          <p>{`${Data?.height}cm`}</p>
           <h2>Temperaments:</h2>
           <p>{Data?.temperament}</p>
           <h2>Life Span:</h2>
-          <p>{Data?.life_span}</p>
+          <p>{`${Data?.life_span} ${Data?.create ? "years" : ""}`}</p>
           {Data?.create ? (
             <div className={style.ButtonContainer}>
               <button
                 onClick={async () => {
-                  console.log(url);
                   let response = await SendfetchData(url, { name: Data.name }, "DELETE");
                   if (response?.success) {
                     alert(response.message);
@@ -79,7 +78,7 @@ function Detailed({ Data, Close }) {
                 </span>
                 <h1>Update</h1>
               </div>
-              <Form Data={Data}></Form>
+              <Form Data={Data} update={setUpdate} method={"PUT"}></Form>
             </div>
           ) : (
             ""

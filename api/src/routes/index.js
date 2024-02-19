@@ -17,16 +17,23 @@ router.get("/DogSearch/:race", async (req, res) => {
       fetchApi(
         `https://api.thedogapi.com/v1/breeds/search?q=${RaceForSearch}&api_key=${Apikey}`
       ),
-      Dog.findOne({ where: { name: RaceForSearch }, include: { model: Temperament } }),
+      Dog.findAll({ where: { name: RaceForSearch }, include: { model: Temperament } }),
     ]);
-
+    /*  console.log(DogsData); //Terrier Pitbull */
+    if (!DogsData) {
+      DogsData = [];
+    }
     let NewapiData = [],
       NewDogsData = [];
     if (apiData?.length > 0) {
       NewapiData = apiData?.map((el) => {
+        let newWeight = el.weight?.metric.replace(/\s/g, "").split("-");
         let obj = {
           id: el.id,
-          weight: el?.weight.metric,
+          weight: {
+            minWeight: parseInt(newWeight[0]),
+            maxWeight: parseInt(newWeight[1]),
+          },
           height: el?.height.metric,
           name: el?.name,
           image: el?.image.url,
@@ -43,9 +50,13 @@ router.get("/DogSearch/:race", async (req, res) => {
         let temperaments = el?.Temperaments?.map((el) => {
           return el?.temperament;
         });
+        let newWeight = el.weight?.replace(/\s/g, "").split("-");
         let obj = {
           id: el.id,
-          weight: el?.weight,
+          weight: {
+            minWeight: parseInt(newWeight[0]),
+            maxWeight: parseInt(newWeight[1]),
+          },
           height: el?.height,
           name: el?.name,
           image: el?.image,
@@ -59,7 +70,7 @@ router.get("/DogSearch/:race", async (req, res) => {
     let newData = [...NewapiData, ...NewDogsData];
     let MaxPage =
       newData.length % 8 === 0 ? newData.length / 8 : parseInt(newData.length / 8) + 1;
-    if (!newData?.length > 0) {
+    if (newData?.length <= 0) {
       throw new Error("No se encontraron resultados");
     }
 
@@ -132,22 +143,6 @@ router.get("/home", async (req, res) => {
   }
 });
 
-router.get("/Dogs/:name", async (req, res) => {
-  try {
-    if (!req.params?.name) {
-      throw new Error("error se necesita el nombre de la raza");
-    }
-    let name = req.params?.name;
-    let data = await Dog.findOne({ where: { name }, include: { model: Temperament } });
-    if (!data?.id) {
-      throw new Error("La raza  no existe");
-    }
-
-    res.send({ success: true, data });
-  } catch (error) {
-    res.status(400).send({ success: false, error: error.message });
-  }
-});
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

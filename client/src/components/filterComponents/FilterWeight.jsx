@@ -33,7 +33,11 @@ function FilterWeight() {
         <button
           className={style.InputButton}
           onClick={() => {
-            Dispatch(GetData(`http://localhost:3001/DogSearch/${search}`));
+            try {
+              Dispatch(GetData(`http://localhost:3001/DogSearch/${search}`));
+            } catch (error) {
+              alert(error.error);
+            }
           }}
         >
           Search

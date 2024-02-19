@@ -24,6 +24,10 @@
   text-align: center;
   color: black;
 }
+.Details > p {
+  max-width: 100%;
+  word-wrap: break-word;
+}
 .Details > label {
   font-size: 110%;
   font-weight: 600;

@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { Dog, Temperament, Dog_Temperament } = require("../db");
 
 const DogRead = async (req, res) => {

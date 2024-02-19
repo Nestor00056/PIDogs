@@ -14,7 +14,7 @@ function FormCreate() {
           <Menu></Menu>
           <div className={style.FormContainer}>
             <h1>CREATE</h1>
-            <Form method={true}></Form>
+            <Form method={"POST"}></Form>
           </div>
         </div>
       </div>

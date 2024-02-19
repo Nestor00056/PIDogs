@@ -18,17 +18,23 @@ const DogCreate = async (req, res) => {
       throw new Error("esta raza ya existe");
     }
     await Dog.create({ name, height, weight, image, life_span });
-    let arrayTemp = temperament.split(","); // esto lo borramos por que lo vamos enviar ya convertido en un objeto
-    for (let index = 0; index < arrayTemp.length; index++) {
-      // aqui cambiamos  arrayTemp por el temp original
-      let [DogSearch, TemperamentSearch] = await Promise.all([
-        Dog.findOne({ where: { name } }),
-        Temperament.findOne({ where: { temperament: arrayTemp[index] } }), // aqui ;o mismo que en el Anterior comentario
-      ]);
-      await Dog_Temperament.create({
-        DogId: DogSearch?.id,
-        TemperamentId: TemperamentSearch?.id,
-      });
+    if (temperament) {
+      let temperamentTwo =
+        temperament[temperament.length - 1] === ","
+          ? temperament.substring(0, temperament.length - 1)
+          : `${temperament}`;
+      let arrayTemp = temperamentTwo.split(","); // esto lo borramos por que lo vamos enviar ya convertido en un objeto
+      for (let index = 0; index < arrayTemp.length; index++) {
+        // aqui cambiamos  arrayTemp por el temp original
+        let [DogSearch, TemperamentSearch] = await Promise.all([
+          Dog.findOne({ where: { name } }),
+          Temperament.findOne({ where: { temperament: arrayTemp[index] } }), // aqui ;o mismo que en el Anterior comentario
+        ]);
+        await Dog_Temperament.create({
+          DogId: DogSearch?.id,
+          TemperamentId: TemperamentSearch?.id,
+        });
+      }
     }
     res.send({
       success: true,

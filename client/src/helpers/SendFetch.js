@@ -9,7 +9,8 @@ const SendfetchData = async (url, data, METHOD = "POST") => {
     let newData = await data.json();
     return newData;
   } catch (error) {
-    return { error: error.message };
+    console.log("hay un error:" + error);
+    return { error };
   }
 };
 

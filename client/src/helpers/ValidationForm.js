@@ -2,7 +2,7 @@ const ValidationData = (Data) => {
   const regex = /^\d+-\d+$/;
   let error = {};
 
-  if (Data?.name.length <= 0) {
+  if (Data?.name?.length <= 0) {
     error.name = "Este campo no debe de estar vacio";
   }
 
@@ -12,11 +12,16 @@ const ValidationData = (Data) => {
       if (parseInt(el) <= 0) {
         error.weight = "El peso minimo o maximo no puede ser 0";
       }
+      if (parseInt(Array[0]) > parseInt([Array[1]])) {
+        error.weight = "El peso minimo no puede ser mayor al peso maximo";
+      }
     });
   } else {
-    error.weight = "los datos no coinciden de la forma necesaria ej: 10-20";
+    if (Data?.weight) {
+      error.weight = "los datos no coinciden de la forma necesaria ej: 10-20";
+    }
   }
-  if (Data?.temperament.length <= 0) {
+  if (Data?.temperament?.length <= 0) {
     error.temperament = "El temperamento, no de debe de estar vacio";
   }
 
@@ -26,9 +31,15 @@ const ValidationData = (Data) => {
       if (parseInt(el) <= 0) {
         error.life_span = "La esperanza de vida  minima o maxima no puede ser 0";
       }
+      if (parseInt(Array[0] > Array[1])) {
+        error.life_span =
+          "La esperanza de vida minima no puede ser mayor a la esperanza de vida maxima";
+      }
     });
   } else {
-    error.life_span = "los datos no coinciden con el formato necesario";
+    if (Data?.life_span) {
+      error.life_span = "los datos no coinciden con el formato necesario";
+    }
   }
 
   if (regex.test(Data?.height)) {
@@ -37,9 +48,14 @@ const ValidationData = (Data) => {
       if (parseInt(el) <= 0) {
         error.height = "La altura minima o maxima no puede ser 0";
       }
+      if (parseInt(Array[0]) > parseInt([Array[1]])) {
+        error.height = "La altura minima no puede ser menor a la  altura maxima";
+      }
     });
   } else {
-    error.height = "los datos no coinciden de la forma necesaria ej: 10-20";
+    if (Data?.height) {
+      error.height = "los datos no coinciden de la forma necesaria ej: 10-20";
+    }
   }
   return error;
 };

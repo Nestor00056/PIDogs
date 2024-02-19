@@ -1,0 +1,167 @@
+.TempContainer {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.164);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.TempContent {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url("../../../public/patitas.jpg");
+}
+.TempContent > h1 {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  font-size: 200%;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 2px rgb(255, 255, 255);
+}
+.TempContent > h2 {
+  font-size: 200%;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 10px rgb(0, 0, 0);
+}
+
+.RenderContent {
+  width: 90%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  padding: 20px;
+  overflow-y: scroll;
+  background-color: white;
+  box-shadow: 0px 0px 10px black;
+  gap: 20px;
+}
+.Temp {
+  width: 300px;
+  height: 80px;
+  box-shadow: 0px 0px 10px black;
+  text-align: center;
+  text-shadow: 0px 0px 5px black;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  border: 5px solid rgb(255, 255, 255);
+  transition: border 0.3s;
+}
+.Select {
+  width: 300px;
+  height: 80px;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  text-align: center;
+  text-shadow: 0px 0px 5px black;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: 5px solid black;
+  transition: border 0.3s;
+}
+
+.RenderContent button {
+  width: 80%;
+  padding: 10px;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  text-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 5px black;
+  transition: background-color 0.3s, color 0.3s, text-shadow 0.3s, box-shadow 0.3s;
+}
+
+.RenderContent button:hover {
+  background-color: white;
+  text-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+}
+.Close {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 300%;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0px 0px 10px;
+  cursor: pointer;
+}
+.InputContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.InputContainer input {
+  height: 30px;
+  border: none;
+  box-shadow: 0px 0px 10px black;
+}
+.Button {
+  width: 150px;
+  padding: 7px;
+  background-color: black;
+  color: white;
+  border: none;
+  text-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 10px black;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+Button:hover {
+  color: white;
+  text-shadow: 0px 0px 5px black;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.Active {
+  width: 150px;
+  padding: 7px;
+  background-color: rgb(255, 255, 255);
+  color: white;
+  border: none;
+  text-shadow: 0px 0px 5px rgb(0, 0, 0);
+  box-shadow: 0px 0px 10px black;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.Active:hover {
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 5px black;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  cursor: pointer;
+}
+.SendButton {
+  width: 200px;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  text-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 10px black;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.SendButton:hover {
+  color: white;
+  text-shadow: 0px 0px 5px black;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  cursor: pointer;
+}

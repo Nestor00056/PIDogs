@@ -7,13 +7,14 @@ const DogRead = require("../controllers/DogRead");
 const DogCreate = require("../controllers/DogCreate");
 const DogUpdate = require("../controllers/DogUpdate");
 const DogDelete = require("../controllers/DogDelete");
+const ValidationDataUpdate = require("../middleware/ValidationDataUpdate");
 const Apikey = "live_btEA80VlYnuWgBntEoYGPLXxy2wxqZYa6y3IB9kw9cmZk77mk72Z6YU2lboAAQdE";
 
 DogsCrudRouter.get("/Dogs", DogRead);
 
 DogsCrudRouter.post("/Dogs", ValidationData, DogCreate);
 
-DogsCrudRouter.put("/Dogs", ValidationData, DogUpdate);
+DogsCrudRouter.put("/Dogs", ValidationDataUpdate, DogUpdate);
 
 DogsCrudRouter.delete("/Dogs", DogDelete);
 
